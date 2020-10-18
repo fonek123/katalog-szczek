@@ -12,7 +12,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 app.use('/blogs', express.static('public'));
 app.use('/blogs/edit', express.static('public'));
-mongoose.connect("mongodb+srv://Szymon:szczekikatalog@katalogszczek.rigkl.gcp.mongodb.net/test", {useUnifiedTopology: true});
+const dev_db_url = 'mongodb+srv://Szymon:szczekikatalog@katalogszczek.rigkl.gcp.mongodb.net/test';
+mongoose.connect(process.env.MONGODB_URI || dev_db_url);
+
 mongoose.set('useFindAndModify', false);
 //SCHEMA SETUP
 const blogSchema = new mongoose.Schema({
