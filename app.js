@@ -20,9 +20,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/katalog-szczek'
 
 mongoose.set('useFindAndModify', false);
 
-app.listen(process.env.PORT || 3000, function () {
-    console.log("Server started");
-});
+
 
 //SCHEMA SETUP
 const blogSchema = new mongoose.Schema({
@@ -140,5 +138,10 @@ app.delete("/blogs/edit/:id", function (req, res) {
 
 app.get("/blogs/*", function (req, res) {
     res.redirect("/blogs");
+});
+
+
+app.listen(process.env.PORT || 3000, function () {
+    console.log("Server started");
 });
 
