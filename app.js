@@ -4,8 +4,7 @@ const express = require('express'),
     serveStatic = require('serve-static'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
-    methodOverride = require('method-override'),
-    dotnev = require('dotenv').config();
+    methodOverride = require('method-override');
 
 //dependencies setup 
 app.set('view engine', 'ejs');
@@ -13,15 +12,24 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 app.use('/blogs', express.static('public'));
 app.use('/blogs/edit', express.static('public'));
+const db = process.env.MONGODB_URL;
 
-
-
-mongoose.connect(process.env.MONGODB_URI);
+const connectDB = async () => {
+  try {
+    await mongoose.connect(db, {
+      useUnifiedTopology: true,
+      useNewUrlParser: true
+    });
+    console.log("MongoDB is Connected...");
+  } catch (err) {
+    console.error(err.message);
+    process.exit(1);
+  }
+};
+// const dev_db_url = 'mongodb+srv://Szymon:szczekikatalog@katalogszczek.rigkl.gcp.mongodb.net/test';
+// mongoose.connect(process.env.MONGODB_URI || dev_db_url, {useunifiedtopology: true});
 
 mongoose.set('useFindAndModify', false);
-
-
-
 //SCHEMA SETUP
 const blogSchema = new mongoose.Schema({
     title: String,
@@ -139,9 +147,6 @@ app.delete("/blogs/edit/:id", function (req, res) {
 app.get("/blogs/*", function (req, res) {
     res.redirect("/blogs");
 });
-
-
 app.listen(process.env.PORT || 3000, function () {
     console.log("Server started");
 });
-
