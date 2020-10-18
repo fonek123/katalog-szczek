@@ -147,7 +147,7 @@ app.delete("/blogs/edit/:id", function (req, res) {
 // app.get("/blogs/*", function (req, res) {
 //     res.redirect("/blogs");
 // });
-app.listen(process.env.PORT, function () {
-    console.log("Server started");
-});
+// app.listen(process.env.PORT, function () {
+//     console.log("Server started");
+// });
 
