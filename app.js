@@ -23,11 +23,11 @@ const blogSchema = new mongoose.Schema({
 });
 const Blog = mongoose.model("Blog", blogSchema);
 //CREATE
-Blog.create({
-    title: "IT 4449",
-    image: "https://i.ibb.co/12PCWYk/IT4449.jpg",
-    body: "Szczęki Ø83"
-});
+// Blog.create({
+//     title: "IT 4449",
+//     image: "https://i.ibb.co/12PCWYk/IT4449.jpg",
+//     body: "Szczęki Ø83"
+// });
 
 //ROUTES
 
