@@ -16,7 +16,7 @@ const db = process.env.MONGODB_URL;
 
 const connectDB = async () => {
   try {
-    await mongoose.connect('mongodb+srv://Szymon:szczekikatalog@katalogszczek.rigkl.gcp.mongodb.net/test', {
+    await (db, {
       useUnifiedTopology: true,
       useNewUrlParser: true
     });
