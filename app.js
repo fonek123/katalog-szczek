@@ -12,20 +12,26 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 app.use('/blogs', express.static('public'));
 app.use('/blogs/edit', express.static('public'));
-mongoose.connect("mongodb://localhost/restful_blog_app");
+mongoose.connect("mongodb+srv://Szymon:szczekikatalog@katalogszczek.rigkl.gcp.mongodb.net/test", {useUnifiedTopology: true});
 mongoose.set('useFindAndModify', false);
 //SCHEMA SETUP
 const blogSchema = new mongoose.Schema({
     title: String,
     image: String,
     body: String,
+    diameter: String,
     created: {type: Date, default: Date.now}
 });
 const Blog = mongoose.model("Blog", blogSchema);
 //CREATE
+// https://ibb.co/5cg1y7C
+// https://ibb.co/WGLk9Cr
+// https://ibb.co/fvwksDZ
+// https://ibb.co/swqrrJG
 // Blog.create({
 //     title: "IT 4449",
 //     image: "https://i.ibb.co/12PCWYk/IT4449.jpg",
+//     diameter: "Ø83",
 //     body: "Szczęki Ø83"
 // });
 
@@ -91,8 +97,9 @@ app.get("/blogs/:id", function (req, res) {
         const title = blog.title;
         const image = blog.image;
         const body = blog.body;
+        const diameter = blog.diameter;
         const id = blog._id;
-        res.render("post", {title: title, image: image, body: body, id: id}); 
+        res.render("post", {title: title, image: image, body: body, id: id, diameter: diameter}); 
     });
     
 });
@@ -127,4 +134,3 @@ app.get("/blogs/*", function (req, res) {
 app.listen(3000, function () {
     console.log("Server started");
 });
-

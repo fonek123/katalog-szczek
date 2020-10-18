@@ -31,25 +31,17 @@
         <h1>SZCZĘKI</h1>   
             <div class="ui three column grid">
                 <%foundBlogs.forEach(blog => { %>
+                  
                     <div class="column">
-                        <div class="ui label">
-                            Date
-                            <div class="detail"><span><%= today %></span></div>
-                        </div>
-                        <a href="/blogs/<%= blog._id %>">
-                        <div class="ui animated button more">
-                       
-                          <div class="visible content">Szczegóły</div>
-                          <div class="hidden content">
-                            <i class="right arrow icon"></i>
-                          </div>
-                        </div>
-                      </a>
+                        
+                        
+                      
                         <h2><%= blog.title %></h2>
-                        <img class="ui centered rounded bordered medium image" src="<%= blog.image %>" alt="blogpostimg">
+                        <a href="/blogs/<%= blog._id %>"><img class="hover ui rounded bordered medium image" src="<%= blog.image %>" alt="blogpostimg"></a>
                         <p><%= blog.body %></p>
                         
                     </div>
+                  
                 <% }); %>
             </div>
     </div>
