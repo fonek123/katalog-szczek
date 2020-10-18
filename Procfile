@@ -1,1 +1,1 @@
-web: node app.js
+echo "web: node loader.js --no-daemon"
