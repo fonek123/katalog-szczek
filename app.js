@@ -16,7 +16,7 @@ app.use('/blogs/edit', express.static('public'));
 
 
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/katalog-szczek');
+mongoose.connect(process.env.MONGODB_URI);
 
 mongoose.set('useFindAndModify', false);
 
