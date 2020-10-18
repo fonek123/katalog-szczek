@@ -12,22 +12,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 app.use('/blogs', express.static('public'));
 app.use('/blogs/edit', express.static('public'));
-const db = process.env.MONGODB_URL;
+var dev_db_url = 'mongodb+srv://Szymon:jakieshaslo@katalogszczek.rigkl.gcp.mongodb.net/blogs?retryWrites=true';
+mongoose.connect(process.env.MONGODB_URI || dev_db_url);
 
-const connectDB = async () => {
-  try {
-    await mongoose.connect(db, {
-      useUnifiedTopology: true,
-      useNewUrlParser: true
-    });
-    console.log("MongoDB is Connected...");
-  } catch (err) {
-    console.error(err.message);
-    process.exit(1);
-  }
-};
-// const dev_db_url = 'mongodb+srv://Szymon:szczekikatalog@katalogszczek.rigkl.gcp.mongodb.net/test';
-// mongoose.connect(process.env.MONGODB_URI || dev_db_url, {useunifiedtopology: true});
 
 mongoose.set('useFindAndModify', false);
 //SCHEMA SETUP
