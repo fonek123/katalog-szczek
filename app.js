@@ -13,7 +13,7 @@ app.use(methodOverride('_method'));
 app.use('/blogs', express.static('public'));
 app.use('/blogs/edit', express.static('public'));
 const dev_db_url = 'mongodb+srv://Szymon:szczekikatalog@katalogszczek.rigkl.gcp.mongodb.net/test';
-mongoose.connect(process.env.MONGODB_URI || dev_db_url);
+mongoose.connect(process.env.MONGODB_URI || dev_db_url, {useunifiedtopology: true});
 
 mongoose.set('useFindAndModify', false);
 //SCHEMA SETUP
@@ -136,3 +136,4 @@ app.get("/blogs/*", function (req, res) {
 app.listen(3000, function () {
     console.log("Server started");
 });
+
