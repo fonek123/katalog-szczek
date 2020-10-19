@@ -16,7 +16,7 @@ mongoose.connect(dbRoute, { useNewUrlParser: true }).then(() => {
     console.log('Error while DB connecting');
     console.log(e);
 });
-
+// mongoose.set('useFindAndModify', false);
 
 //dependencies setup 
 app.set('view engine', 'ejs');
@@ -28,7 +28,7 @@ app.use('/blogs/edit', express.static('public'));
 // mongoose.connect(process.env.MONGODB_URI || dev_db_url);
 
 
-mongoose.set('useFindAndModify', false);
+
 //SCHEMA SETUP
 const blogSchema = new mongoose.Schema({
     title: String,
@@ -146,6 +146,6 @@ app.delete("/blogs/edit/:id", function (req, res) {
 app.get("/blogs/*", function (req, res) {
     res.redirect("/blogs");
 });
-app.listen(process.env.PORT || 3000, function () {
+app.listen(port, function () {
     console.log("Server started");
 });
