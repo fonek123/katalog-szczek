@@ -6,14 +6,26 @@ const express = require('express'),
     mongoose = require('mongoose'),
     methodOverride = require('method-override');
 
+//MongoDB connect
+const dbRoute = 'mongodb+srv://Szymon:jakieshaslo@katalogszczek.rigkl.gcp.mongodb.net/blogs?retryWrites=true';
+const dbRouteLocal = 'mongodb://localhost/katalog-szczek';
+
+mongoose.connect(dbRoute, { useNewUrlParser: true }).then(() => {
+    console.log('Connected to mongoDB')
+}).catch(e => {
+    console.log('Error while DB connecting');
+    console.log(e);
+});
+
+
 //dependencies setup 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 app.use('/blogs', express.static('public'));
 app.use('/blogs/edit', express.static('public'));
-var dev_db_url = 'mongodb+srv://Szymon:jakieshaslo@katalogszczek.rigkl.gcp.mongodb.net/blogs?retryWrites=true';
-mongoose.connect(process.env.MONGODB_URI || dev_db_url);
+// var dev_db_url = 'mongodb+srv://Szymon:jakieshaslo@katalogszczek.rigkl.gcp.mongodb.net/blogs?retryWrites=true';
+// mongoose.connect(process.env.MONGODB_URI || dev_db_url);
 
 
 mongoose.set('useFindAndModify', false);
