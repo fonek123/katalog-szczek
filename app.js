@@ -104,7 +104,7 @@ app.post("/katalog", function (req, res) {
 
 //SHOW EACH POST
 
-app.get("/blogs/:id", function (req, res) {
+app.get("/katalog/:id", function (req, res) {
     Blog.findById(req.params.id, function (err, blog) {
         const title = blog.title;
         const image = blog.image;
