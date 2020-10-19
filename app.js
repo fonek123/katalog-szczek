@@ -10,7 +10,7 @@ const express = require('express'),
 const dbRoute = 'mongodb+srv://Szymon:jakieshaslo@katalogszczek.rigkl.gcp.mongodb.net/blogs?retryWrites=true';
 const dbRouteLocal = 'mongodb://localhost/katalog-szczek';
 
-mongoose.connect(dbRoute, { useNewUrlParser: true }).then(() => {
+mongoose.connect(dbRoute, { useNewUrlParser: true }, { useUnifiedTopology: true }).then(() => {
     console.log('Connected to mongoDB')
 }).catch(e => {
     console.log('Error while DB connecting');
