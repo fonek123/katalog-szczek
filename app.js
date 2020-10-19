@@ -10,7 +10,7 @@ const express = require('express'),
 const dbRoute = 'mongodb+srv://Szymon:jakieshaslo@katalogszczek.rigkl.gcp.mongodb.net/blogs?retryWrites=true';
 const dbRouteLocal = 'mongodb://localhost/katalog-szczek';
 
-mongoose.connect(dbRoute, { useNewUrlParser: true }, { useUnifiedTopology: true }).then(() => {
+mongoose.connect(dbRoute, { useNewUrlParser: true }, { useUnifiedTopology: true },).then(() => {
     console.log('Connected to mongoDB')
 }).catch(e => {
     console.log('Error while DB connecting');
@@ -26,7 +26,13 @@ app.use('/blogs', express.static('public'));
 app.use('/blogs/edit', express.static('public'));
 // var dev_db_url = 'mongodb+srv://Szymon:jakieshaslo@katalogszczek.rigkl.gcp.mongodb.net/blogs?retryWrites=true';
 // mongoose.connect(process.env.MONGODB_URI || dev_db_url);
-
+app.use(function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Headers', 'Origin,X-Requested-    With,content-type,Accept,content-type,application/json');
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS,     PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    next();
+});
 
 
 //SCHEMA SETUP
@@ -35,7 +41,7 @@ const blogSchema = new mongoose.Schema({
     image: String,
     body: String,
     diameter: String,
-    created: {type: Date, default: Date.now}
+    
 });
 const Blog = mongoose.model("Blog", blogSchema);
 //CREATE
@@ -73,19 +79,10 @@ app.get("/blogs", function (req, res) {
         if (err) {
             console.log("ERROR");
             console.log(err);
-        }   else {
-            let dd = foundBlogs[0].created.getDate();
-            let mm = foundBlogs[0].created.getMonth()+1; 
-            const yyyy = foundBlogs[0].created.getFullYear();
-            if(dd<10) {
-                dd='0'+dd;
-            } 
-
-            if(mm<10) {
-                mm='0'+mm;
-            } 
-            const today = dd+'-'+mm+'-'+yyyy;
-            res.render("index", {foundBlogs: foundBlogs, today: today});
+        } 
+        else 
+        {   
+                res.render("index", {foundBlogs: foundBlogs});
         }
     })
 });
@@ -146,6 +143,7 @@ app.delete("/blogs/edit/:id", function (req, res) {
 app.get("/blogs/*", function (req, res) {
     res.redirect("/blogs");
 });
-app.listen(process.env.PORT, function () {
+app.listen(process.env.PORT || 3000, function () {
     console.log("Server started");
+    
 });
