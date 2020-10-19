@@ -38,7 +38,9 @@ a.ui.button {
 h1 {
         margin: 2em;
   }
-
+h2 {
+    font-size: 15px;
+}
 
 
 .desc {

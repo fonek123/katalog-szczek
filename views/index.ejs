@@ -26,17 +26,17 @@
       
     <div class="ui container">
         <h1>SZCZĘKI</h1>   
-            <div class="ui three column grid">
+            <div class="ui four column grid">
                 <%foundBlogs.forEach(blog => { %>
                   
                     <div class="column">
                         
                         
-                      
+                        <div class="ui small rounded images">
                         <h2><%= blog.title %></h2>
-                        <a href="/katalog/<%= blog._id %>"><img class="hover ui rounded bordered medium image" src="<%= blog.image %>" alt="blogpostimg"></a>
+                        <a href="/katalog/<%= blog._id %>"><img class="ui hover image" src="<%= blog.image %>" alt="blogpostimg"></a>
                         <p><%= blog.body %></p>
-                        
+                      </div>
                     </div>
                   
                 <% }); %>

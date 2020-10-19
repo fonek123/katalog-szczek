@@ -24,8 +24,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 app.use('/katalog', express.static('public'));
 app.use('/katalog/edit', express.static('public'));
-// var dev_db_url = 'mongodb+srv://Szymon:jakieshaslo@katalogszczek.rigkl.gcp.mongodb.net/blogs?retryWrites=true';
-// mongoose.connect(process.env.MONGODB_URI || dev_db_url);
+
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Headers', 'Origin,X-Requested-    With,content-type,Accept,content-type,application/json');
     res.setHeader('Access-Control-Allow-Origin', '*');
