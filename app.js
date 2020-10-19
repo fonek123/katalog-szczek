@@ -26,7 +26,7 @@ app.use('/blogs', express.static('public'));
 app.use('/blogs/edit', express.static('public'));
 // var dev_db_url = 'mongodb+srv://Szymon:jakieshaslo@katalogszczek.rigkl.gcp.mongodb.net/blogs?retryWrites=true';
 // mongoose.connect(process.env.MONGODB_URI || dev_db_url);
-
+process.env.MONGODB_URI
 
 
 //SCHEMA SETUP
@@ -146,6 +146,6 @@ app.delete("/blogs/edit/:id", function (req, res) {
 app.get("/blogs/*", function (req, res) {
     res.redirect("/blogs");
 });
-app.listen(port, function () {
+app.listen(process.env.PORT, function () {
     console.log("Server started");
 });
