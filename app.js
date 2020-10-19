@@ -64,7 +64,6 @@ app.get("/", function (req, res) {
 //EDIT
 app.get("/katalog/edit/:id", function (req, res) {
     Blog.findById(req.params.id, function (err, blog) {
-        
         res.render("edit", {blog: blog});
     })
     
