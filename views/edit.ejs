@@ -28,7 +28,7 @@
 <div class="ui container">
     <h1><%= blog.title %></h1>
     <div class="ui form">
-        <form action="/blogs/edit/<%=blog._id%>?_method=put" method="post">
+        <form action="/katalog/edit/<%=blog._id%>?_method=put" method="post">
             
                 <div class="field">
                     <label>Nazwa</label>
@@ -50,7 +50,7 @@
                     <button class="ui right floated red button" type="submit" form="deletedForm">Delete</button>
         </form>
         
-            <form action="/blogs/edit/<%=blog._id%>?_method=delete" method="post" id="deletedForm">
+            <form action="/katalog/edit/<%=blog._id%>?_method=delete" method="post" id="deletedForm">
                 
             </form>
         

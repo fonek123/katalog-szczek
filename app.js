@@ -16,14 +16,14 @@ mongoose.connect(dbRoute, { useNewUrlParser: true }, { useUnifiedTopology: true 
     console.log('Error while DB connecting');
     console.log(e);
 });
-// mongoose.set('useFindAndModify', false);
+mongoose.set('useFindAndModify', false);
 
 //dependencies setup 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
-app.use('/blogs', express.static('public'));
-app.use('/blogs/edit', express.static('public'));
+app.use('/katalog', express.static('public'));
+app.use('/katalog/edit', express.static('public'));
 // var dev_db_url = 'mongodb+srv://Szymon:jakieshaslo@katalogszczek.rigkl.gcp.mongodb.net/blogs?retryWrites=true';
 // mongoose.connect(process.env.MONGODB_URI || dev_db_url);
 app.use(function (req, res, next) {
@@ -60,10 +60,10 @@ const Blog = mongoose.model("Blog", blogSchema);
 
 //INDEX REDIRECT
 app.get("/", function (req, res) {
-    res.redirect("/blogs");
+    res.redirect("/katalog");
 });
 //EDIT
-app.get("/blogs/edit/:id", function (req, res) {
+app.get("/katalog/edit/:id", function (req, res) {
     Blog.findById(req.params.id, function (err, blog) {
         
         res.render("edit", {blog: blog});
@@ -74,7 +74,7 @@ app.get("/blogs/edit/:id", function (req, res) {
 
 
 //INDEX
-app.get("/blogs", function (req, res) {
+app.get("/katalog", function (req, res) {
     Blog.find({}, function (err, foundBlogs) {
         if (err) {
             console.log("ERROR");
@@ -88,16 +88,16 @@ app.get("/blogs", function (req, res) {
 });
 
 //NEW POST
-app.get("/blogs/new", function (req, res) {
+app.get("/katalog/new", function (req, res) {
     res.render("new");
 });
 //POST
-app.post("/blogs", function (req, res) {
+app.post("/katalog", function (req, res) {
     Blog.create(req.body, function (err, newBlog) {
         if (err) {
             res.render("new");
         } else {
-            res.redirect("/blogs")
+            res.redirect("/katalog")
         }
     })
 });
@@ -119,29 +119,29 @@ app.get("/blogs/:id", function (req, res) {
 //EDIT POST
 
 
-app.put("/blogs/edit/:id", function (req, res) {
+app.put("/katalog/edit/:id", function (req, res) {
     Blog.findByIdAndUpdate(req.params.id, req.body, function (err, blog) {
-        res.redirect("/blogs/"+ blog._id); 
+        res.redirect("/katalog/"+ blog._id); 
         
     });
 });
 
-app.delete("/blogs/edit/:id", function (req, res) {
+app.delete("/katalog/edit/:id", function (req, res) {
     Blog.findByIdAndDelete(req.params.id, function (err) {
         if (err) {
             console.log("ERROR");
             console.log(err);
-            res.redirect("/blogs");
+            res.redirect("/katalog");
         } else {
-            res.redirect("/blogs");
+            res.redirect("/katalog");
         }
     });
 });
 
 
 
-app.get("/blogs/*", function (req, res) {
-    res.redirect("/blogs");
+app.get("/katalog/*", function (req, res) {
+    res.redirect("/katalog");
 });
 app.listen(process.env.PORT || 3000, function () {
     console.log("Server started");
