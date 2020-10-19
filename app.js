@@ -18,7 +18,7 @@ mongoose.connect(dbRoute, { useNewUrlParser: true }, { useUnifiedTopology: true 
 });
 mongoose.set('useFindAndModify', false);
 
-//dependencies setup 
+//dependencies setup
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
