@@ -1,5 +1,6 @@
 body > .ui.container {
     margin-top: 3em;
+    background-color: blanchedalmond;
   }
     iframe {
         border: none;
@@ -49,5 +50,7 @@ h2 {
 .hover:hover {
     opacity: 0.5;    
 }
+
+
 
 
