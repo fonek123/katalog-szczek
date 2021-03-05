@@ -52,10 +52,7 @@ const blogSchema = new mongoose.Schema({
 })
 const Blog = mongoose.model('Blog', blogSchema)
 //CREATE
-// https://ibb.co/5cg1y7C
-// https://ibb.co/WGLk9Cr
-// https://ibb.co/fvwksDZ
-// https://ibb.co/swqrrJG
+
 // Blog.create({
 //     title: "IT 4449",
 //     image: "https://i.ibb.co/12PCWYk/IT4449.jpg",

@@ -28,19 +28,19 @@
         <form action="/katalog/edit/<%=blog._id%>?_method=put" method="post">
           <div class="field">
             <label>Nazwa</label>
-            <input type="text" name="title" value="<%= blog.title %>" />
+            <input type="text" name="title" value="<%= blog.title %>" required />
           </div>
           <div class="field">
             <label>Zdjęcie</label>
-            <input type="url" name="image" value="<%= blog.image %>" />
+            <input type="url" name="image" value="<%= blog.image %>" required />
           </div>
           <div class="field">
             <label>Średnica</label>
-            <input type="text" name="diameter" value="<%= blog.diameter %>" />
+            <input type="text" name="diameter" value="<%= blog.diameter %>" required />
           </div>
           <div class="field">
             <label>Opis</label>
-            <textarea name="body" required><%= blog.body %></textarea>
+            <textarea name="body"><%= blog.body %></textarea>
           </div>
           <button class="ui button" type="submit">Submit</button>
           <button
