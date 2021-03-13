@@ -85,6 +85,10 @@ app.get('/katalog', function (req, res) {
   })
 })
 
+app.get('/katalog/narzedzia', function (req, res) {
+  res.render('narzedzia')
+});
+
 //NEW POST
 app.get('/katalog/new', function (req, res) {
   res.render('new')
