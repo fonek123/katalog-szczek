@@ -54,5 +54,8 @@ p {
     opacity: 0.5;    
 }
 
+body {
+    background-color: darkgrey;
+}
 
 
