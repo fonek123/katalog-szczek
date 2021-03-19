@@ -43,6 +43,21 @@ app.use(function (req, res, next) {
   next()
 })
 
+const toolSchema = new mongoose.Schema({
+  title: String,
+  image: String,
+  body: String,
+  direction: String,
+})
+const Tool = new mongoose.model('Tool', toolSchema)
+
+Tool.create({
+    title: "WNMG",
+    image: "willbe",
+    body: "WNMG",
+    direction: "R",
+});
+
 //SCHEMA SETUP
 const blogSchema = new mongoose.Schema({
   title: String,
