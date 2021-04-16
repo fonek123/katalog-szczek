@@ -22,7 +22,13 @@
 
     <div class="ui container">
       <h1>SZCZĘKI</h1>
-      
+      <!-- <div class="ui search">
+        <div class="ui icon input">
+          <input class="prompt" type="text" value="Ø" oninput="searching()" />
+          <i class="search icon"></i>
+        </div>
+        <div class="results"></div>
+      </div> -->
       <div class="ui four column grid">
         <%foundBlogs.forEach(blog => { %>
 
@@ -35,7 +41,6 @@
                 src="<%= blog.image %>"
                 alt="blogpostimg"
             /></a>
-            
           </div>
         </div>
 
@@ -53,5 +58,29 @@
       integrity="sha256-t8GepnyPmw9t+foMh3mKNvcorqNHamSKtKRxxpUEgFI="
       crossorigin="anonymous"
     ></script>
+    <!-- <script>
+      var diameter = $('h2')
+      function searching() {
+        for (let i = 0; i < diameter.length; i++) {
+          
+          var foundDiameter = diameter[i].firstChild.data
+          // console.log(foundDiameter);
+          
+        
+     
+        var userInput = $('input')[0].value
+        
+      // console.log(userInput);
+        if (userInput == foundDiameter) {
+          var found = $(diameter[i]);
+          $(found).addClass('found');
+          console.log(found);
+        } else {
+          console.log('wtf')
+          $(found).removeClass('found');
+        };
+      };
+    };
+    </script> -->
   </body>
 </html>

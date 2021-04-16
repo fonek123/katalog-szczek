@@ -18,25 +18,29 @@
 
       <a href="new" class="item"> Dodaj Szczęki </a>
     </div>
+    <div class="ui vertical animated button right floated">
+      <div class="visible content">Edit</div>
+      <div class="hidden content">
+        <i class="edit icon"></i>
+      </div>
+    </div>
     <div class="ui container centered">
-      <a href="/katalog/edit/<%=id %>">
-        <div class="ui vertical animated button right floated">
-          <div class="visible content">Edit</div>
-          <div class="hidden content">
-            <i class="edit icon"></i>
+      <div class="ui two column grid">
+        <div class="column">
+          <a href="/katalog/edit/<%=id %>"> </a>
+          <h1><%= title %></h1>
+          <p><%= diameter %></p>
+          <img
+            class="ui centered medium image rounded huge"
+            src="<%= image %>"
+            alt="blogimage"
+          />
+        </div>
+        <div class="column">
+          <div class="vertical-center">
+            <p><%= body %></p>
           </div>
         </div>
-      </a>
-      <h1><%= title %></h1>
-      <p><%= diameter %></p>
-      <img
-        class="ui centered medium image rounded huge"
-        src="<%= image %>"
-        alt="blogimage"
-      />
-
-      <div class="ui raised segment">
-        <p class="desc"><%= body %></p>
       </div>
     </div>
 
