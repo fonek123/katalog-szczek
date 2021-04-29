@@ -62,6 +62,7 @@ Tool.create({
 const blogSchema = new mongoose.Schema({
   title: String,
   image: String,
+  imageRys: String,
   body: String,
   diameter: String,
 })
@@ -125,12 +126,14 @@ app.get('/katalog/:id', function (req, res) {
   Blog.findById(req.params.id, function (err, blog) {
     const title = blog.title
     const image = blog.image
+    const imageRys = blog.imageRys
     const body = blog.body
     const diameter = blog.diameter
     const id = blog._id
     res.render('post', {
       title: title,
       image: image,
+      imageRys: imageRys,
       body: body,
       id: id,
       diameter: diameter,
